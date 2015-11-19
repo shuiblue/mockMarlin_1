@@ -13,7 +13,7 @@
 #endif
 
 void manage_inactivity();
-
+void calculate_delta(float cartesian[3]);
 extern bool feedmultiplychanged;
 
 #ifdef FWRETRACT
