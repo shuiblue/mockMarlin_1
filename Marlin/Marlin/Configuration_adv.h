@@ -1,7 +1,7 @@
 #ifndef CONFIGURATION_ADV_H
 #define CONFIGURATION_ADV_H
 
-#ifdef MANUAL_HOME_POSITION  //Use manual limit switch locations
+#ifdef MANUAL_HOME_POSITIONS  //Use manual limit switch locations
   #define X_HOME_POS MANUAL_X_HOME_POS
 #endif 
 
