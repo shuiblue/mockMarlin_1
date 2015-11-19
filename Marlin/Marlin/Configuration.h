@@ -1,19 +1,24 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
-#define STRING_CONFIG_H_AUTHOR "(none, default config)" //Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(jcrocholl, deltabot)" //Who made the changes.
 
 #ifndef MOTHERBOARD
-#define MOTHERBOARD 7
+#define MOTHERBOARD 33
 #endif
 
+//===========================================================================
+//============================== Delta Settings =============================
+//===========================================================================
 
-
+#define DELTA_SEGMENTS_PER_SECOND 200
+#define COS_60 0.5
+#define DELTA_TOWER1_X -SIN_60*DELTA_RADIUS 
 //===========================================================================
 //=============================Thermal Settings  ============================
 //===========================================================================
 
-#define TEMP_SENSOR_0 -1
+#define TEMP_SENSOR_0 1
 
 // PID settings:
 // Comment the following line to disable PID and enable bang-bang.
@@ -26,7 +31,7 @@
 
 
 // The pullups are needed if you directly connect a mechanical endswitch between the signal and ground pins.
-const bool X_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops. 
+const bool X_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
 
 //#define DISABLE_MAX_ENDS
 //automatic expansion
