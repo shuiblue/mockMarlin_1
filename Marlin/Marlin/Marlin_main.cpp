@@ -4,7 +4,9 @@
 //===========================================================================
 
 static float destination[NUM_AXIS] = {  0.0, 0.0, 0.0, 0.0};
+#ifdef DELTA
 static float delta[3] = {0.0, 0.0, 0.0};
+#endif
 void process_commands()
 {
   
@@ -53,7 +55,7 @@ void process_commands()
   }
 }
 }
-
+#ifdef DELTA
 void calculate_delta(float cartesian[3])
 {
   delta[X_AXIS] = sqrt(sq(DELTA_DIAGONAL_ROD)
@@ -77,13 +79,14 @@ void calculate_delta(float cartesian[3])
   SERIAL_ECHOPGM(" z="); SERIAL_ECHOLN(delta[Z_AXIS]);
   */
 }
-
+#endif
 
 void prepare_move()
 {
   clamp_to_software_endstops(destination);
 
   previous_millis_cmd = millis(); 
+  #ifdef DELTA
    float difference[NUM_AXIS];
   for (int8_t i=0; i < NUM_AXIS; i++) {
     difference[i] = destination[i] - current_position[i];
@@ -108,6 +111,7 @@ void prepare_move()
                      destination[E_AXIS], feedrate*feedmultiply/60/100.0,
                      active_extruder);
   }
+  #endif
   for(int8_t i=0; i < NUM_AXIS; i++) {
     current_position[i] = destination[i];
   }
